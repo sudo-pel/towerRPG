@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TRPG</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="js/bundle.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://pelswebsite.co.uk/trpglogo.ico"/>
+  </head>
+  <body>
+    <div>
+        <h1 class="title">Tower RPG - Version 0.18.2</h1>
+    </div>
+
+    <div class="box main"><span class="mainText" style="font-size: 16px;"></span>
+        <form class="input form-input" onsubmit="return false">
+            <input type="text button submit" placeholder="Input here!" class="box main-input">
+        </form>
+    </div>
+
+    <div class="box status-div">
+
+      <div class="stats-display-left" id="mainstats" style="float:left">
+          's stats <br>
+          attack:<br>
+          defence: <br>
+          magic attack:<br>
+          magic defense: <br>
+          speed: <br>
+          critical chance: <br>
+          critical damage: <br>
+          effectiveness: <br>
+          resistance: <br>
+          evasion: <br>
+      </div>
+
+      <div class="stats-display-right" id="elemstats" style="float:right">
+        ELEMENTAL OFFENSE:<br>
+        fire:<br>
+        water:<br>
+        wind:<br>
+        earth:<br>
+        thunder:<br>
+        light:<br>
+        dark:<br><br>
+        ELEMENTAL DEFENCE:<br>
+        fire:<br>
+        water:<br>
+        wind:<br>
+        earth:<br>
+        thunder:<br>
+        light:<br>
+        dark:<br>
+
+      </div>
+      
+  </div>
+
+  <div class="box status-div" id="miscview">
+    <div class="box status-div centercontent" id="minimapview" style="visibility:hidden">
+    </div>
+    <div class="stats-display-left" id="playerstats" style="float:left">
+        Level: <br>
+        EXP: <br>
+        Gold <br>
+    </div>
+
+    <div class="stats-display-right" id="inventory" style="float:right">
+      <b>Inventory</b>
+
+    </div>
+
+    
+</div>
+
+<!-- Class for styling/adding events, ID [for tablinks] denotes the argument for changeTab-->
+<div class="tab-container" id="draggable" style="visibility: hidden;">
+  <!-- Tab links -->
+  <div class="tab" id="draggableheader">
+      <button class="tablinks" id="input-shortcut-link">Input Shortcut</button>
+      <button class="tablinks" id="supercommands-link">Super commands</button>
+      <button class="tablinks" id="combat-link">Combat</button>
+      <button class="tablinks" id="skills-and-sp-link">Skills and SP</button>
+      <button class="tablinks" id="general-assistance-link">General Assistance</button>
+      <button class="tablinks" id="close" style="float:right">Close</button>
+   </div>
+    
+  <!-- Tab content -->
+  <div id="input-shortcut" class="tabcontent">
+    <h3>Input Shortcut</h3>
+    <p>Input shortcut can be used in lots of places in order to see the options you have available.
+     If you changed it in settings and have forgotten it, don't worry! You can input sc-inputshortcut to find out what
+    it is set to. You can also change it in settings ('set/'settings' when in the main menu) to one of a small selection
+    keys.</p>
+  </div>
+    
+  <div id="supercommands" class="tabcontent" style="overflow:auto">
+    <h3>Super commands</h3>
+    <p>Super commands are text commands that can be used anywhere, usually to enhance your experience. Below are a list of the current super commands:</p>
+    <br><b>---------SUPER COMMAND LIST---------</b>
+    <p>
+      <b>sc-[element]-[number]px</b> to change the text size of a box;
+      Possible inputs for [element] are "main", "stat" and "misc"
+      For example "sc-main-20px" will change the size of text in the main box (big output box) to 20 pixels
+      <br><br>
+      <b>sc-reset</b> to reset the sizes of all boxes. Default size is 16 px
+      <br><br>
+      <b>sc-volume-NUMBER</b> to change game volume. NUMBER must be between 0 (mute) and 1 (max volume)
+      <br>
+      <b>sc-music-NUMBER</b> to change music volume and not FX
+      <br>
+      <b>sc-fx-NUMBER</b> to change FX volume and not music
+      <br><br>
+      <b>sc-minimap</b> to toggle minimap display where applicable [this can be used in some places where 'sm'/'show minimap' cannot, like battle and the inventory]
+      <br><br>
+      <b>sc-clear</b> to clear the main view <b>(This will wipe all text from the display, so ensure you know where you are menuwise if you're going to do this.)</b>
+      <br><br>
+      <b>sc-return</b> to immediately exit applicable menus (crafting, shop, stats, inventory) no matter where you are (no need to input 'b'/'back' several times)
+      <br><br>
+      <b>sc-inputshortcut</b> to see your designated input shortcut key.
+      <br><br>
+      <b>sc-discord</b> to bring up a message showing the TRPG discord invite link.</b>
+      <br><br>
+      <b>sc-help</b> (obviously!) To open the help module and <b>sc-helpreset</b> to reset its position when it is moved offscreen
+    </p>
+    </div>
+    
+  <div id="combat" class="tabcontent-2-holder tabcontent">
+    <div class="tab" style="border: 0px">
+        <button class="tablinks-2 tablinks" id="combat-stats-link">Stats</button>
+        <button class="tablinks-2 tablinks" id="combat-options-link">Options</button>
+        <button class="tablinks-2 tablinks" id="combat-damage-link">Damage</button> 
+    </div>
+
+    <div id="combat-stats" class="tabcontent-2">
+      <h3>Combat - Stats</h3>
+      <p>
+        There are quite a few stats, but don't worrys since most of them are self-explanatory. Regardless, this sections will go over them in detail:
+        <br><br>
+        <b>Attack</b> and <b>Magic Attack</b> dictate damage dealt by your physical and magical attacks. Similarly,
+        <b>Defence</b> and <b>Magic Defence</b> dictate the amount by which incoming physical and magical attacks are reduced. <u>
+        (DO NOTE that 'physical' the element (along with fire, water, etc..) and 'physical' the attack type ('physical and magical')
+        are two VERY different things. Attack boosts physical damage, the ATTACK TYPE. To increase the damage of attacks with
+        the physical ELEMENT, you need to increase your physical offence stat [the elemental stat]).
+        </u>
+        <br><br>
+        <b>Speed</b> is a special stat. If your speed is at least 2x as high as your opponent's, you will gain an additional
+        action on your turns!
+        <br><br>
+        <b>Stamina</b>, <b>Mana</b> and <b>SP</b> are used to perform certain skills. <b>Stamina</b> regenerates over time
+        during a battle, whereas <b>Mana</b> does not. <b>SP</b> always starts at 0 and is usually gained through certain skill
+        and item effects. Keep in mind that stamina, health and mana will not regenerate inbetween battles while exploring!
+        <br><br>
+        <b>Effectiveness</b> increases your chances of applying a debuff by a certain percentage. <b>Resistance</b> decreases
+        your chances of applying a debuff by a certain percentage.
+        <br><br>
+        Your <b>Elemental stats</b> show the percentages of damage you take/deal from certain elements. 200 fire attack means
+        your fire attacks deal double (200%) damage, and 50 fire defence means fire attacks dealt to you deal half (50%) damage.
+        The percentage you see beside a number when an attack is used is a combination of the user's elemental offence, the
+        target's elemental defence and any mitigation effects. Elemental stats cannot go below 1 or above 500.
+        <br><br>
+        <b>Evasion</b> refers to the percentage chance of evading an attack. This starts at 0 for a player, but can be raised using
+        skills and equipment. If an attack is evaded, no damage will be taken and sometimes effects (such as debuffs) will not occur.
+        Generally speaking, only attacks that deal damage can be evaded.
+        <br><br>
+        <b>Critical chance</b> refers to a percentage chance of dealing a <u>critical attack</u>, in which case the attack will deal
+        a percentage of the original damage denoted by your <b>Critical damage</b> (original damage is 100%, so with a critical damage
+        of 150%, a critical hit will cause your attack to deal 1.5x damage).
+        <br><br>
+        The <b>Buff limit</b> for <b>Attack, Magic Attack, Defence, Magic Defence and Speed</b> is up to 500%
+        (all buffs stack additively).
+        <br><br>
+        There is no such cap for <b>Critical chance/damage, Resistance, Effectiveness or Evasion</b>, however they cannot go below 0. Damage dealt
+        cannot be negative.
+      </p>
+    </div>
+
+    <div id="combat-options" class="tabcontent-2">
+      <h3>Combat - Options</h3>  
+      <p>
+        Most of the options in combat will be your skills. But there are a few besides them that need to be known:
+        <br><br>
+        First of all, you can use <b>Input Shortcut</b> during battle to check your options. This is strongly recommended
+        as you may forget the skills that you have equipped/their exact names. Make good use of input shortcut during combat.
+        <br><br>
+        Input <b>Skills</b> to see the names and descriptions (which will include cost and effects) of all your skills.
+        <br><br>
+        Input <b>Status</b> to see all buffs and debuffs applied to your character, along with your current HP, Mana, Stamina and SP
+        (however these can also be viewed via the display in the upper right)
+        <br><br>
+        Input <b>Enemy</b> to see all buffs and debuffs applied to the enemy, along with their HP, Mana, Stamina and SP. You may want
+        to keep track of your enemies' resources to see when/if they can use certain skills, and possibly also to deduce the costs of
+        some of their skills.
+        <br><br>
+        Input <b>Flee</b> to immediately end the battle. However if you do so, <b>it will automatically result in your loss.</b> There
+        is no death penalty in TRPG, however you will return to the main menu and have to return to your position while exploring manually
+        and/or redo the fight. It is recommended only to use this if your defeat is imminent.
+      </p>
+    </div>
+
+    <div id="combat-damage" class="tabcontent-2">
+      <h3>Combat - Damage</h3>  
+      <p>
+        Dealing damage, as you might expect, is the key to victory. When you deal damage, you will see something like this:
+        <br><br>
+        Pel struck the enemy! [Attack]<br>
+        10 damage! (100% physical) [physical]
+        <br><br>
+        On the first line, <u>Pel struck the enemy!</u> is the action description of the skill. Most skills will have their own unique
+        action description, but it doesn't really mean anything. In square brackets beside the action description is the name of
+        the skill <u>[Attack]</u>
+        <br><br>
+        On the second line, <u>(100% physical)</u> shows the damage <b>type</b>, along with the percentage modifier applied to
+        the damage. This is combination of your elemenal offence, the enemy's elemental defence, and their mitigation. It does
+        <u>not</u> take into account critical damage or any other modifiers. If you know your elemental offence and the
+        enemy's mitigation, you can use this to infer their elemental defence for that element. But it is probably best just to
+        use <u>Check</u> on them.
+        <br><br>
+        In square brackets beside this, <u>[physical]</u> is the attack <b>element</b>. Note here how this is a PHYSICAL type attack
+        of the PHYSICAL element. This means it uses the stat defence and the elemental stat physical defence. A skill
+        with the line
+        <br>
+        <u>10 damage! (100% physical) [water]</u>
+        <br>
+         deals physical (type) water (element) damage, and a skill with the line 
+        <br>
+        <u>10 damage! (100% magical) [physical]</u>
+        <br>
+         deals magical (type) physical (element) damage, although this would be quite rare.
+        <br>
+        Damage is also coloured according to the element, but if you have something like a dark theme web extension, the colouring can be
+        messed up. This will ensure you know the elements of the attacks you are struck by and use.
+      </p>
+    </div>
+
+  </div>
+
+  <div id="skills-and-sp" class="tabcontent-2-holder tabcontent">
+      <div class="tab" style="border: 0px">
+          <button class="tablinks-2 tablinks" id="disciplines-link">Disciplines</button>
+          <button class="tablinks-2 tablinks" id="learning-and-forgetting-skills-link">Learning and forgetting skills</button>
+          <button class="tablinks-2 tablinks" id="equipping-and-unequipping-skills-link">Equipping and unequipping skills</button>
+          <button class="tablinks-2 tablinks" id="allocating-sp-link">Allocating SP</button>
+      </div>
+
+      <div id="disciplines" class="tabcontent-2">
+        <h3>Skills and SP - Disciplines</h3>
+        <p>
+          Skills are organised into <b>Disciplines</b>. They usually follow a specific theme or specific strategy, but the skills within can be
+          mixed with other disciplines for an optimal setup. Unlocking a discipline and also unlocking each individual skill within a discipline
+          will each incur a cost. Disciplines cannot be 'forgotten' like skills can, but the resources needed to unlock them are not level-locked like
+          AP is for skills. Disciplines may become visible as you grow stronger or complete other tasks. Currently, there are 4 disciplines ingame.
+        </p>
+      </div>
+
+      <div id="learning-and-forgetting-skills" class="tabcontent-2">
+        <h3>Skills and SP - Learning and forgetting skills</h3>  
+        <p>
+          You can learn skills that are in disciplines you've unlocked in order to add them to your repertoire (you have to equip them first to use
+          them in battle though). To learn a skill, use the following inputs (from the main stats menu):
+          <br><br>
+          'sk'/'skills' -> 'l'/'learn' -> Select the desired discipline -> Select the desired skill -> If it can be learned, you will be given
+          the option to do so.
+          <br><br><br>
+          Most skills can also be forgotten. This will return the AP from having learned the skill, but nothing else - the gold and any reagents used
+          will be lost forever. A skill must not be equipped if you are to forget it. To forget a skill, use the following inputs (from the main stats menu):
+          <br><br>
+          'sk'/'skills' -> 'e'/'equipped' -> Select the discipline of the skill -> 'f'/'forget' -> Confirm decision
+        </p>
+      </div>
+
+      <div id="equipping-and-unequipping-skills" class="tabcontent-2">
+        <h3>Skills and SP - Equipping and unequipping skills</h3>  
+        <p>
+          After you've unlocked a skill, in order to use it in combat, you need to have it equipped. You can have up to 12 skills equipped, including
+          'Attack' and 'Guard'. They cannot be unequipped, which means you can have 10 skills of your choice equipped at any one time. There is no
+          restriction on the combinations of skills you can have equipped. To equip a skill, use the following inputs (from the main stats menu):
+          <br><br>
+          'sk'/'skills' -> 'e'/'equipped' -> Select the appropriate discipline -> Select the appropriate skill -> 'e'/'equip'
+          <br><br><br>
+          You can also view all your currently equipped skills. When doing so, you can type the name of an equipped skill in order to unequip it.
+          To do both of these things, use the following inputs (from the main stats menu):
+          <br><br>
+          'sk'/'skills' -> 'e'/'equipped' -> 'e'/'equipped'
+        </p>
+      </div>
+
+      <div id="allocating-sp" class="tabcontent-2">
+        <h3>Skills and SP - Allocating SP</h3>  
+        <p>
+          When you level up, all your stats increase slightly. However, you will also gain two SP, which you can use to further increase
+          certain stats of your choice. The following stats can be allocated to:
+          <br><br>
+          Health - 20 HP per 1 SP<br>
+          Mana - 15 Mana per 1 SP<br>
+          Atk, Def, MAtk, MDef, Speed - 2 of each stat per 1 SP
+          <br><br>
+          <u>Do note that there is a limit to the amount of SP that can be allocated to one stat depending on your level. This
+           is to prevent overly min-maxed builds.</u>
+          <br><br>
+          SP can also be reset. Specific stats cannot be un-allocated, only all allocated SP at once. This incurs a gold cost, which is
+          equal to the total SP allocated * 20.
+          <br><br>
+          The SP menu is easy to find. To access it, just input 'sp' in the main stats menu.
+        </p>
+      </div>
+
+  </div>
+
+  <div id="general-assistance" class="tabcontent-2-holder tabcontent">
+      <div class="tab" style="border: 0px">
+          <button class="tablinks-2 tablinks" id="general-faq-link">FAQ</button>
+          <button class="tablinks-2 tablinks" id="game-tips-link">Game Tips</button>
+      </div>
+
+      <div id="general-faq" class="tabcontent-2">
+        <h3>General Assistance - FAQ</h3>
+        <p>
+          <b>I'm stuck in a menu!</b>
+          <br>
+          Firstly, if you just want to navigate backwards, usually 'b'/'back' will do the trick. When exploring, input 'rep'/'reprint' to
+          see your options.
+          <br>
+          Usually, to remedy this, you can press the allocated input shortcut key. You can use the super command 'sc-inputshortcut'
+           to check what your toggle for it is.
+          If input shortcut is unavailable, you can try to scroll up and see if there were any instructions for the menu you're in. 
+          <br><br>
+          As a side note, if input shorcut won't work and 'back' won't work, you are probably exploring. So input 'rep'/'reprint' to see
+          your options. You may also find that 'sc-return' brings you to a menu you can operate in.
+        </p>
+      </div>
+
+      <div id="game-tips" class="tabcontent-2">
+        <h3>General Assistance - Game tips</h3>
+        <p>
+          <b>I can't beat an enemy!</b>
+          <br>
+          Enemies will often have gimmicks or behaviours that, when understood make the fight significantly easier. Try to look
+          for patterns such as the turns that skills are used, or the costs of some skills and when they are used. Some enemies
+          will respond to your actions by using certain skills, others will use a skill whenever available, for others, it may
+          be random. Watch out for <u>Boost</u> in particular; some monsters will use it whenever they have the SP.
+          <br><br>
+          Alternatively, try Analyzing the enemy using the skill in the Adventurer's discipline. This way you can learn of any
+          potential weaknesses, and perhaps infer some things about its behaviour from your observations. You can also try and
+          change your stats to suit certain enemies, for example having just enough speed to gain the extra action. Find
+          the strategy that best suits you!
+          <br><br>
+          Also, while battling, keep in mind small plays that are slightly more efficient - they may help in the long run.
+          An example is guarding when you know an enemy is going to boost. This will reduce the damage they deal boosting, and
+          you can use the gained SP to boost yourself and deal additional (unguarded) damage. In this case, their use of SP
+          was less efficient than yours, and this can be the difference between victory and defeat.
+          <br><br><br>
+          <b>I keep dying while travelling!</b>
+          <br>
+          It could help to learn about the enemies in the area, so you can beat them efficiently and not have to use as many
+          items. Also, many floor shops (accesible in the main menu by inputting 'shop') will sell items like health and mana
+          potions to help you explore more easily. You can sell enemy drops to get gold fast for potions and the like.
+        </p>
+      </div>
+
+
+  </div>
+
+</div>
+
+
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://pelswebsite.co.uk/trpglogo.ico"/>
+  </head>
+  <body>
+    <div>
+        <h1 class="title">Tower RPG - Version 0</h1>
+    </div>
+
+    <div class="box main"><span class="mainText" style="font-size: 16px;"></span>
+        <form class="input form-input" onsubmit="return false">
+            <input type="text button submit" class="box main-input">
+        </form>
+    </div>
+
+    <div class="box status-div">
+
+      <div class="stats-display-left" id="mainstats" style="float:left">
+          's stats <br>
+          attack:<br>
+          defence: <br>
+          magic attack:<br>
+          magic defense: <br>
+          speed: <br>
+          critical chance: <br>
+          critical damage: <br>
+          effectiveness: <br>
+          resistance: <br>
+          evasion: <br>
+      </div>
+
+      <div class="stats-display-right" id="elemstats" style="float:right">
+        ELEMENTAL OFFENSE:<br>
+        fire:<br>
+        water:<br>
+        wind:<br>
+        earth:<br>
+        thunder:<br>
+        light:<br>
+        dark:<br><br>
+        ELEMENTAL DEFENCE:<br>
+        fire:<br>
+        water:<br>
+        wind:<br>
+        earth:<br>
+        thunder:<br>
+        light:<br>
+        dark:<br>
+
+      </div>
+      
+  </div>
+
+  <div class="box status-div" id="miscview">
+    <div class="box status-div centercontent" id="minimapview" style="visibility:hidden">
+    </div>
+    <div class="stats-display-left" id="playerstats" style="float:left">
+        Level: <br>
+        EXP: <br>
+        Gold <br>
+    </div>
+
+    <div class="stats-display-right" id="inventory" style="float:right">
+      <b>Inventory</b>
+
+    </div>
+
+    
+</div>
+
+
+
+    <script type="module" src="js/bundle.js"></script>
+  </body>
+</html>

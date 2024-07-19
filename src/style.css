@@ -1,0 +1,50 @@
+html, body { height: 100%; padding: 0; margin: 0; }
+
+.box { outline-style: solid;
+    outline-color: black;
+    outline-width: 1px;
+    margin: 2px;
+    float: left; }
+
+.title { text-align: center;
+    height: 10%;
+}
+
+.main { width: 65%;
+    height: 85%;
+    position: relative;
+    overflow: auto;
+    left: 5% }
+
+.main-input { width:90%;
+    float: left;
+    bottom: 0px;
+    position: fixed; }
+
+.status { width: 25%;
+    height: 85%;
+    float:right; }
+
+.status-div { height: 40%;
+    width: 25%;
+    margin: 10px;
+    float:right }
+
+.stats-display-right { height: 100%;
+    width:40%;
+    float:right;
+    overflow: auto;
+}
+
+.stats-display-left { height: 100%;
+    width: 50%;
+    float:left;
+    overflow: auto;
+}
+
+.centercontent { text-align: center;
+    overflow:auto;
+    position: absolute;
+    right: 0%;
+
+}

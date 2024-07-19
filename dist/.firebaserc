@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "towerproject-38d78",
+    "towerproject": "towerproject-38d78",
+    "dist": "towerproject-38d78"
+  },
+  "targets": {},
+  "etags": {}
+}

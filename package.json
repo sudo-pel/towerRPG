@@ -1,0 +1,24 @@
+{
+  "name": "towerproject",
+  "version": "1.0.0",
+  "description": "tower project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --open",
+    "dist": "webpack --mode production"
+  },
+  "author": "pelumi",
+  "license": "ISC",
+  "devDependencies": {
+    "localstorage": "^1.0.1",
+    "requirejs": "^2.3.6",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "path": "^0.12.7"
+  }
+}

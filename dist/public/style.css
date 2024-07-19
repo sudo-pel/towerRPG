@@ -1,0 +1,113 @@
+html, body { height: 100%; padding: 0; margin: 0; }
+
+.box { outline-style: solid;
+    outline-color: black;
+    outline-width: 1px;
+    margin: 2px;
+    float: left; }
+
+.title { text-align: center;
+    height: 10%;
+}
+
+.main { width: 65%;
+    height: 85%;
+    position: relative;
+    overflow: auto;
+    left: 5% }
+
+.main-input { width:90%;
+    float: left;
+    bottom: 2%;
+    position: fixed;
+    height: 2.5%}
+
+.status { width: 25%;
+    height: 85%;
+    float:right; }
+
+.status-div { height: 40%;
+    width: 25%;
+    margin: 10px;
+    float:right }
+
+.stats-display-right { height: 100%;
+    width:40%;
+    float:right;
+    overflow: auto;
+}
+
+.stats-display-left { height: 100%;
+    width: 50%;
+    float:left;
+    overflow: auto;
+}
+
+.centercontent { text-align: center;
+    overflow:auto;
+    position: absolute;
+    right: 0%;
+
+}
+
+#battlePlayer {visibility: hidden }
+
+/* CSS FOR HELP MODULE */
+/* ------------------------------- */
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    background-color: #ddd;
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .tabcontent-2-holder {
+      display: none;
+      padding: 0px 0px;
+      border: 1px solid #ccc;
+      border-top: none;
+      overflow: auto;
+      max-height: 75vh;
+    }
+  
+  .tabcontent-2 {
+      display: none;
+      border-top: none;
+  }
+  
+  #draggable {
+      width: 35%;
+      position: absolute;
+  }
+  
+  
